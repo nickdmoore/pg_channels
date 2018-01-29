@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
 	name = 'pg_channels',
 	packages = ['pg_channels'],
-	version = '1.0',
+	version = '1.1',
 	license='MIT',
 	description = 'Python wrapper for PostgreSQL NOTIFY and LISTEN commands.',
 	author = 'Nick Moore',
