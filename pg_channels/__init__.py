@@ -88,20 +88,29 @@ class PGChannels:
 			self.notify(channel, payload)
 
 
-	def events(self, channel=None, timeout=0):
+	def events(self, channel=None, timeout=0, loop=True):
 		'''
 		Yields notify events as they are received for the specified
 		channel. If no channel is specified, yields notify events from
-		all subscribed to channels.
+		all subscribed to channels. If loop argument is False, any
+		available notify events are instead returned.
 		'''
 
 		while True:
+
+			events = []
+
 			if not select([self.conn], [], [], timeout) == ([], [], []):
 				self.conn.poll()
 				while self.conn.notifies:
 					notify = self.conn.notifies[0]
 					if notify.channel == channel or channel is None:
+						events.append(notify)
 						yield self.conn.notifies.pop(0)
+
+			if not loop:
+				return events
+
 
 
 	def close(self):
