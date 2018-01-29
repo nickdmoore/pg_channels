@@ -3,6 +3,12 @@
 Python wrapper for PostgreSQL NOTIFY and LISTEN commands.
 
 
+#### Installation
+
+```
+pip install pg_chanels
+```
+
 
 #### Usage
 
