@@ -9,6 +9,8 @@ Python wrapper for PostgreSQL NOTIFY and LISTEN commands.
 First, establish a connection to the PostgreSQL database:
 
 ```python
+import pg_channels
+
 pgc = pg_channels.connect(host='localhost', database='mydb')
 ```
 

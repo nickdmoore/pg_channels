@@ -100,9 +100,8 @@ class PGChannels:
 				self.conn.poll()
 				while self.conn.notifies:
 					notify = self.conn.notifies[0]
-					if not notify.channel == channel:
-						continue
-					yield self.conn.notifies.pop(0)
+					if notify.channel == channel or channel is None:
+						yield self.conn.notifies.pop(0)
 
 
 	def close(self):
